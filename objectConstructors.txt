@@ -1,0 +1,75 @@
+// Object Constructors
+
+// THIS IS BAD BECAUSE FUNCTIONS INSIDE OF OBJECT CONSTRUCTORS IS NO BUENO
+    // function Book(title, author, pages, read) {
+    //     this.title = title;
+    //     this.author = author;
+    //     this.pages = pages;
+    //     this.read = read;
+    //     this.info = function() {
+    //         return `Book Title: ${title}; \n` + `Author: ${author}; \n` + `# of Pages: ${pages}; \n` + `Read?: ${read}; \n`;
+    //     }
+
+    // }
+
+    // const book1 = new Book('bingus', 'dingus', 69420, true);
+    // const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
+
+    // console.log(book2.info());
+    // console.log(book1.pages);
+
+
+// THIS SHOWS HOW INHERITANCE WORKS I THINK
+    // function NewBook() {
+
+    // }
+
+    // NewBook.prototype.info = function() {
+    //     return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
+    // }
+
+    // NewBook.prototype.hasRead = function() {
+    //     return `\n${this.title}, read?: ${this.read}`
+    // }
+
+    // function Book(title, author, pages, read) {
+    //     this.title = title;
+    //     this.author = author;
+    //     this.pages = pages;
+    //     this.read = read;
+    // }
+
+    // Book.prototype = Object.create(NewBook.prototype)
+
+    // const book1 = new Book('bingus', 'dingus', 69420, true);
+    // const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
+
+    // console.log(book1.info())
+    // console.log(book2.hasRead())
+
+
+// THIS ALSO WORKS THE ABOVE CODE IS TO SHOW HOW INHERITANCE SORTA WORKS
+    // function Book(title, author, pages, read) {
+    //     this.title = title;
+    //     this.author = author;
+    //     this.pages = pages;
+    //     this.read = read;
+    // }
+
+    // Book.prototype.info = function() {
+    //     return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
+    // }
+
+    // Book.prototype.hasRead = function() {
+    //     return `\n${this.title}, read?: ${this.read}`
+    // }
+
+
+
+    // // Book.prototype = Object.create(NewBook.prototype)
+
+    // const book1 = new Book('bingus', 'dingus', 69420, true);
+    // const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
+
+    // console.log(book1.info())
+    // console.log(book2.hasRead())

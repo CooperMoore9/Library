@@ -1,76 +1,48 @@
-// Object Constructors
+const container = document.querySelector('#cardWrapper')
+let myLibrary = [];
 
-// THIS IS BAD BECAUSE FUNCTIONS INSIDE OF OBJECT CONSTRUCTORS IS NO BUENO
+function Book(title, author, pages, read){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
 
-    // function Book(title, author, pages, read) {
-    //     this.title = title;
-    //     this.author = author;
-    //     this.pages = pages;
-    //     this.read = read;
-    //     this.info = function() {
-    //         return `Book Title: ${title}; \n` + `Author: ${author}; \n` + `# of Pages: ${pages}; \n` + `Read?: ${read}; \n`;
-    //     }
+Book.prototype.info = function() {
+    return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
+}
 
-    // }
+const bookExample1 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false)
+const bookExample2 = new Book('bingus', 'dingus', 69420, true)
+ 
+myLibrary.push(bookExample1, bookExample2)
 
-    // const book1 = new Book('bingus', 'dingus', 69420, true);
-    // const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
+function addBookToLibrary() {
 
-    // console.log(book2.info());
-    // console.log(book1.pages);
+}
 
+for(let i = 0; i < myLibrary.length ; i++){
 
-// THIS SHOWS HOW INHERITANCE WORKS I THINK
-    function NewBook() {
+    const book = document.createElement('div');
+    const bookTitle = document.createElement('div');
+    const bookAuthor = document.createElement('div');
+    const bookPages = document.createElement('div');
+    const bookRead = document.createElement('div');
 
-    }
+    book.classList.add('bookCard');
+    bookTitle.classList.add('bookTitle');
+    bookAuthor.classList.add('bookAuthor');
+    bookPages.classList.add('bookPages');
+    bookRead.classList.add('bookRead');
 
-    NewBook.prototype.info = function() {
-        return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
-    }
+    container.appendChild(book);
+    book.appendChild(bookTitle);
+    book.appendChild(bookAuthor);
+    book.appendChild(bookPages);
+    book.appendChild(bookRead);
 
-    NewBook.prototype.hasRead = function() {
-        return `\n${this.title}, read?: ${this.read}`
-    }
-
-    function Book(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
-
-    Book.prototype = Object.create(NewBook.prototype)
-
-    const book1 = new Book('bingus', 'dingus', 69420, true);
-    const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
-
-    console.log(book1.info())
-    console.log(book2.hasRead())
-
-
-// THIS ALSO WORKS THE ABOVE CODE IS TO SHOW HOW INHERITANCE SORTA WORKS
-    // function Book(title, author, pages, read) {
-    //     this.title = title;
-    //     this.author = author;
-    //     this.pages = pages;
-    //     this.read = read;
-    // }
-
-    // Book.prototype.info = function() {
-    //     return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
-    // }
-
-    // Book.prototype.hasRead = function() {
-    //     return `\n${this.title}, read?: ${this.read}`
-    // }
-
-
-
-    // // Book.prototype = Object.create(NewBook.prototype)
-
-    // const book1 = new Book('bingus', 'dingus', 69420, true);
-    // const book2 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false);
-
-    // console.log(book1.info())
-    // console.log(book2.hasRead())
+    bookTitle.textContent = `Title: ${myLibrary[i].title}`;
+    bookAuthor.textContent = `Author: ${myLibrary[i].author}`;
+    bookPages.textContent = `# of Pages: ${myLibrary[i].pages}`;
+    bookRead.textContent = `Read?: ${myLibrary[i].read}`;
+}
