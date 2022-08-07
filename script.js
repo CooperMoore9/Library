@@ -1,6 +1,8 @@
 const container = document.querySelector('#cardWrapper')
 const addBookButton = document.querySelector('#addBookButton')
 const removeBookButton = document.querySelector('#removeBookButton')
+const newBookForm = document.querySelector('#newBookInput')
+const modal = document.getElementById('#formModal')
 let myLibrary = [];
 
 function Book(title, author, pages, read){
@@ -26,9 +28,11 @@ addBookButton.addEventListener('click', () => {
 })
 
 removeBookButton.addEventListener('click', () => {
-    console.log(myLibrary.length - 1)
-    myLibrary.splice(myLibrary.length - 1, 1)
-    resetBookCards()
+    if (confirm('Really?')){
+        console.log(myLibrary.length - 1)
+        myLibrary.splice(myLibrary.length - 1, 1)
+        resetBookCards()
+    }
 })
 
 function resetBookCards() {

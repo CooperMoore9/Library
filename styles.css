@@ -18,3 +18,13 @@ html {
   height: 250px;
   margin: 20px;
 }
+
+#formModal {
+  display: flex;
+}
+
+#newBookInput {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
