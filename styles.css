@@ -7,6 +7,11 @@ html {
     margin: 0;
 }
 
+#addBookButton {
+  margin: 12px;
+  margin-left: 24px;
+}
+
 .bookCard {
   border-style: solid;
   width: 250px;
