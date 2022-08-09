@@ -9,31 +9,38 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="formModal" class="modal">
-        <form id="newBookInput" action="">
-            <div class="titleWrapper">
-                <label for="bookTitle">Title: </label>
-                <input id="bookTitle" type="text">
-            </div>
-            <div class="authorWrapper">
-                <label for="bookAuthor">Author: </label>
-                <input id="bookAuthor" type="text">
-            </div>
-            <div class="pageWrapper">
-                <label for="bookPages"># of Pages: </label>
-                <input id="bookPages" type="text">
-            </div>
-            <div class="readWrapper">
-                <label for="bookRead">Read?: </label>
-                <input id="bookRead" type="checkbox">>
-            </div>
-            <div class="sumitWrapper">
-                <input type="submit">
-            </div>
-        </form>
+    <div id="myModal" class="modal">
+        <div class="modalContent">
+            <span id="closeButton">&times;</span>
+            <form id="newBookInput" action="">
+                <div class="titleWrapper">
+                    <label for="bookTitle">Title: </label>
+                    <input id="bookTitle" type="text">
+                </div>
+                <div class="authorWrapper">
+                    <label for="bookAuthor">Author: </label>
+                    <input id="bookAuthor" type="text">
+                </div>
+                <div class="pageWrapper">
+                    <label for="bookPages"># of Pages: </label>
+                    <input id="bookPages" type="text">
+                </div>
+                <div class="readWrapper">
+                    <label for="bookRead">Read?: </label>
+                    <input id="bookRead" type="checkbox">>
+                </div>
+                <div class="submitWrapper">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
     </div>
+
     <button id="addBookButton">Add Book</button>
     <button id="removeBookButton">Remove Book</button>
-<div id="cardWrapper"></div>
+    <button id="testButton">Open Modal</button>
+
+    <div id="cardWrapper"></div>
+
 </body>
 </html>
