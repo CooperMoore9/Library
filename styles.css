@@ -21,12 +21,13 @@ height: 250px;
 margin: 20px;
 }
 
-form {
-display: flex;
-flex-direction: column;
-width: 500px;
+.bookRead {
+  display: flex;
 }
 
+.bookReadInput {
+  width: 15%;
+}
 
 .modal {
 display: none; /* Hidden by default */
@@ -43,11 +44,18 @@ background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
 /* Modal Content/Box */
 .modalContent {
+display: flex;
+justify-content: space-between;
 background-color: #fefefe;
 margin: 15% auto; /* 15% from the top and centered */
 padding: 20px;
 border: 1px solid #888;
 width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.submitWrapper {
+  display: flex;
+  justify-content: center;
 }
 
 #closeButton {
@@ -63,3 +71,4 @@ color: black;
 text-decoration: none;
 cursor: pointer;
 }
+

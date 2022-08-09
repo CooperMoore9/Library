@@ -74,24 +74,33 @@ function setBookCards() {
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
         const bookPages = document.createElement('div');
-        const bookRead = document.createElement('div');
+        const bookRead = document.createElement('form');
+        const bookReadInput = document.createElement('input');
+        const bookReadLabel = document.createElement('label');
+
+        bookReadInput.type = 'checkbox'
+        bookReadLabel.setAttribute('for', 'bookReadInput')
 
         book.classList.add('bookCard');
         bookTitle.classList.add('bookTitle');
         bookAuthor.classList.add('bookAuthor');
         bookPages.classList.add('bookPages');
         bookRead.classList.add('bookRead');
+        bookReadInput.classList.add('bookReadInput')
 
         container.appendChild(book);
         book.appendChild(bookTitle);
         book.appendChild(bookAuthor);
         book.appendChild(bookPages);
         book.appendChild(bookRead);
+        bookRead.appendChild(bookReadLabel);
+        bookRead.appendChild(bookReadInput);
+
 
         bookTitle.textContent = `Title: ${myLibrary[i].title}`;
         bookAuthor.textContent = `Author: ${myLibrary[i].author}`;
         bookPages.textContent = `# of Pages: ${myLibrary[i].pages}`;
-        bookRead.textContent = `Read?: ${myLibrary[i].read}`;
+        bookReadLabel.textContent = `Read?: `;
     }
 };
 
