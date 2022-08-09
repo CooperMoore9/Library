@@ -2,19 +2,14 @@ const container = document.querySelector('#cardWrapper')
 const addBookButton = document.querySelector('#addBookButton')
 const removeBookButton = document.querySelector('#removeBookButton')
 const newBookForm = document.querySelector('#newBookInput')
-let myLibrary = [];
-
 const modal = document.getElementById("myModal")
 const modalButton = document.getElementById('testButton')
 const closeButton = document.getElementById('closeButton')
+let myLibrary = [];
 
-modalButton.addEventListener('click', () => {
-    modal.style.display = "block";
-})
 
-closeButton.addEventListener('click', () => {
-    modal.style.display = "none";
-})
+
+
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -32,6 +27,20 @@ const bookExample2 = new Book('bingus', 'dingus', 69420, true)
 const bookExample3 = new Book('Crow Anatomy', 'Jacob Crowe', 631, true)
  
 myLibrary.push(bookExample1, bookExample2)
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+modalButton.addEventListener('click', () => {
+    modal.style.display = "block";
+})
+
+closeButton.addEventListener('click', () => {
+    modal.style.display = "none";
+})
 
 addBookButton.addEventListener('click', () => {
     myLibrary.push(bookExample3)
