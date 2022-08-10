@@ -1,15 +1,17 @@
-const container = document.querySelector('#cardWrapper')
-const addBookButton = document.querySelector('#addBookButton')
-const removeBookButton = document.querySelector('#removeBookButton')
-const newBookForm = document.querySelector('#newBookInput')
-const modal = document.getElementById("myModal")
-const modalButton = document.getElementById('testButton')
-const closeButton = document.getElementById('closeButton')
+const container = document.querySelector('#cardWrapper');
+const addBookButton = document.querySelector('#addBookButton');
+const removeBookButton = document.querySelector('#removeBookButton');
+const newBookForm = document.querySelector('#newBookInput');
+const modal = document.getElementById("myModal");
+const modalButton = document.getElementById('testButton');
+const closeButton = document.getElementById('closeButton');
+let newBookTitle = '';
+let newBookAuthor = '';
+let newBookPages = 0;
+let newBookRead = false;
 let myLibrary = [];
 
-
-
-
+console.log(newBookTitle);
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -32,20 +34,29 @@ window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+}
 
-modalButton.addEventListener('click', () => {
-    modal.style.display = "block";
-})
-
-closeButton.addEventListener('click', () => {
+document.querySelector('#submitButton').addEventListener('click', (event) => {
+    event.preventDefault();
+    let newBook = new Book (newBookForm[0].value, newBookForm[1].value, newBookForm[2].value, newBookForm[3].value);
+    myLibrary.push(newBook);
+    resetBookCards();
     modal.style.display = "none";
 })
 
+// modalButton.addEventListener('click', () => {
+//     modal.style.display = "block";
+// });
+
+closeButton.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
 addBookButton.addEventListener('click', () => {
-    myLibrary.push(bookExample3)
+    modal.style.display = "block";
+
     resetBookCards()
-})
+});
 
 removeBookButton.addEventListener('click', () => {
     if (confirm('Really?')){
@@ -53,7 +64,7 @@ removeBookButton.addEventListener('click', () => {
         myLibrary.splice(myLibrary.length - 1, 1)
         resetBookCards()
     }
-})
+});
 
 function resetBookCards() {
     refreshBookCards();
