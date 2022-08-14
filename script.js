@@ -38,15 +38,20 @@ window.onclick = function(event) {
 
 document.querySelector('#submitButton').addEventListener('click', (event) => {
     event.preventDefault();
+
+    if(newBookForm[0].value == 0 || newBookForm[1].value == 0){
+        alert('Please input Title/Author')
+    }else if(newBookForm[2].value != parseInt(newBookForm[2].value)){
+        alert('Please input Page Number')
+    }
+    else{
     let newBook = new Book (newBookForm[0].value, newBookForm[1].value, newBookForm[2].value, newBookForm[3].value);
     myLibrary.push(newBook);
     resetBookCards();
     modal.style.display = "none";
-})
+}
 
-// modalButton.addEventListener('click', () => {
-//     modal.style.display = "block";
-// });
+})
 
 closeButton.addEventListener('click', () => {
     modal.style.display = "none";
@@ -54,7 +59,6 @@ closeButton.addEventListener('click', () => {
 
 addBookButton.addEventListener('click', () => {
     modal.style.display = "block";
-
     resetBookCards()
 });
 
@@ -65,6 +69,8 @@ removeBookButton.addEventListener('click', () => {
         resetBookCards()
     }
 });
+
+
 
 function resetBookCards() {
     refreshBookCards();
