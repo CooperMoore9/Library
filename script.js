@@ -24,8 +24,8 @@ Book.prototype.info = function() {
     return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
 }
 
-const bookExample1 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, false)
-const bookExample2 = new Book('bingus', 'dingus', 69420, true)
+const bookExample1 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, 'Unread')
+const bookExample2 = new Book('bingus', 'dingus', 69420, 'Read')
 const bookExample3 = new Book('Crow Anatomy', 'Jacob Crowe', 631, true)
  
 myLibrary.push(bookExample1, bookExample2)
@@ -45,7 +45,12 @@ document.querySelector('#submitButton').addEventListener('click', (event) => {
         alert('Please input Page Number')
     }
     else{
-    let newBook = new Book (newBookForm[0].value, newBookForm[1].value, newBookForm[2].value, newBookForm[3].value);
+        if(newBookForm[3].checked){
+            newBookForm[3].textContent = 'Read'
+        }else{
+            newBookForm[3].textContent = 'Unread'
+        }
+    let newBook = new Book (newBookForm[0].value, newBookForm[1].value, newBookForm[2].value, newBookForm[3].textContent);
     myLibrary.push(newBook);
     resetBookCards();
     modal.style.display = "none";
@@ -62,16 +67,6 @@ addBookButton.addEventListener('click', () => {
     resetBookCards()
 });
 
-removeBookButton.addEventListener('click', () => {
-    if (confirm('Really?')){
-        console.log(myLibrary.length - 1)
-        myLibrary.splice(myLibrary.length - 1, 1)
-        resetBookCards()
-    }
-});
-
-
-
 function resetBookCards() {
     refreshBookCards();
     setBookCards();
@@ -84,41 +79,62 @@ function refreshBookCards() {
     })
 }
 
+function bookReadButton(bookVariable) {
+    console.log(bookVariable.read)
+    if(bookVariable.read == 'Read'){
+        bookVariable.read = 'Unread'
+    }else{
+        bookVariable.read = 'Read'
+    }
+}
+
+function deleteBook(bookVariable) {
+    myLibrary.splice(myLibrary.indexOf(bookVariable), 1)
+}
+
 function setBookCards() {
     for(let i = 0; i < myLibrary.length ; i++){
+
+        let bookVariable = myLibrary[i]
 
         const book = document.createElement('div');
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
         const bookPages = document.createElement('div');
-        const bookRead = document.createElement('form');
-        const bookReadInput = document.createElement('input');
-        const bookReadLabel = document.createElement('label');
-
-        bookReadInput.type = 'checkbox'
-        bookReadLabel.setAttribute('for', 'bookReadInput')
+        const bookRead = document.createElement('button');
+        const deleteButton = document.createElement('button')
 
         book.classList.add('bookCard');
         bookTitle.classList.add('bookTitle');
         bookAuthor.classList.add('bookAuthor');
         bookPages.classList.add('bookPages');
         bookRead.classList.add('bookRead');
-        bookReadInput.classList.add('bookReadInput')
+        deleteButton.classList.add('deleteButton')
 
         container.appendChild(book);
         book.appendChild(bookTitle);
         book.appendChild(bookAuthor);
         book.appendChild(bookPages);
         book.appendChild(bookRead);
-        bookRead.appendChild(bookReadLabel);
-        bookRead.appendChild(bookReadInput);
-
+        book.appendChild(deleteButton);
 
         bookTitle.textContent = `Title: ${myLibrary[i].title}`;
         bookAuthor.textContent = `Author: ${myLibrary[i].author}`;
         bookPages.textContent = `# of Pages: ${myLibrary[i].pages}`;
-        bookReadLabel.textContent = `Read?: `;
+        bookRead.textContent =  myLibrary[i].read
+        deleteButton.textContent = 'Delete'
+
+        bookRead.addEventListener('click', () => {
+            bookReadButton(bookVariable);
+            resetBookCards();
+        })
+
+        deleteButton.addEventListener('click', () => {
+            deleteBook(bookVariable);
+            resetBookCards();
+        })
+
     }
 };
 
-setBookCards();
+resetBookCards();
