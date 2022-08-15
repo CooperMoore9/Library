@@ -80,7 +80,6 @@ function refreshBookCards() {
 }
 
 function bookReadButton(bookVariable) {
-    console.log(bookVariable.read)
     if(bookVariable.read == 'Read'){
         bookVariable.read = 'Unread'
     }else{
@@ -98,25 +97,31 @@ function setBookCards() {
         let bookVariable = myLibrary[i]
 
         const book = document.createElement('div');
+        const bookCardContentWrapper = document.createElement('div');
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
         const bookPages = document.createElement('div');
+        const bookButtons = document.createElement('div')
         const bookRead = document.createElement('button');
         const deleteButton = document.createElement('button')
 
         book.classList.add('bookCard');
+        bookCardContentWrapper.classList.add('bookCardContentWrapper')
         bookTitle.classList.add('bookTitle');
         bookAuthor.classList.add('bookAuthor');
         bookPages.classList.add('bookPages');
+        bookButtons.classList.add('bookButtons')
         bookRead.classList.add('bookRead');
         deleteButton.classList.add('deleteButton')
 
         container.appendChild(book);
-        book.appendChild(bookTitle);
-        book.appendChild(bookAuthor);
-        book.appendChild(bookPages);
-        book.appendChild(bookRead);
-        book.appendChild(deleteButton);
+        book.appendChild(bookCardContentWrapper);
+        bookCardContentWrapper.appendChild(bookTitle);
+        bookCardContentWrapper.appendChild(bookAuthor);
+        bookCardContentWrapper.appendChild(bookPages);
+        book.appendChild(bookButtons)
+        bookButtons.appendChild(bookRead);
+        bookButtons.appendChild(deleteButton);
 
         bookTitle.textContent = `Title: ${myLibrary[i].title}`;
         bookAuthor.textContent = `Author: ${myLibrary[i].author}`;
