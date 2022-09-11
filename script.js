@@ -13,22 +13,26 @@ let myLibrary = [];
 
 console.log(newBookTitle);
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book{
+        constructor (title, author, pages, read){
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.read = read;
+    }
 
-Book.prototype.info = function() {
-    return `Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`;
+    logBook(){
+        console.log(`Book Title: ${this.title}; \n` + `Author: ${this.author}; \n` + `# of Pages: ${this.pages}; \n` + `Read?: ${this.read}; \n`)
+    }
+
+
 }
 
 const bookExample1 = new Book('My Brother in Christ 2, Electric Boogaloo', 'Jesus himself', Infinity, 'Unread')
 const bookExample2 = new Book('bingus', 'dingus', 69420, 'Read')
-const bookExample3 = new Book('Crow Anatomy', 'Jacob Crowe', 631, true)
+const bookExample3 = new Book('Crow Anatomy', 'Jacob Crowe', 631, 'Read')
  
-myLibrary.push(bookExample1, bookExample2)
+myLibrary.push(bookExample1, bookExample2, bookExample3)
 
 window.onclick = function(event) {
     if (event.target == modal) {
