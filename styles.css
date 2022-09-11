@@ -19,11 +19,17 @@ padding: 12px;
 font-size: 18px;
 }
 
+#addBookButton:hover {
+  background-color: #aaa;
+}
+
 .bookCard {
 border-style: solid;
 width: 275px;
 height: 275px;
 margin: 20px;
+overflow: hidden;
+overflow-wrap: break-word;
 }
 
 .bookRead {
